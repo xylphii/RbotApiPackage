@@ -2,6 +2,12 @@ package com.example.RuneBotApi;
 
 import net.runelite.api.ItemID;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class RBConstants {
 
     // ~~~~Npcs~~~~
@@ -9,6 +15,7 @@ public class RBConstants {
 
     // ~~~~Misc~~~~
     public static final int coinPouchId = 22531;
+    public static final int houseTabId = 8013;
 
 
     // ~~~~Food~~~~
@@ -69,6 +76,9 @@ public class RBConstants {
             ItemID.SARADOMIN_BREW3,
             ItemID.SARADOMIN_BREW4
     };
+
+    public static final HashSet<Integer> foodHashSet = IntStream.of(foodIds).boxed().collect(Collectors.toCollection(HashSet::new));
+
 
     // ~~~~Potions~~~~
     public static final int[] brewIds = {ItemID.SARADOMIN_BREW1, ItemID.SARADOMIN_BREW2, ItemID.SARADOMIN_BREW3, ItemID.SARADOMIN_BREW4};

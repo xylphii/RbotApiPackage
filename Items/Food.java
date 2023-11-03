@@ -3,10 +3,7 @@ package com.example.RuneBotApi.Items;
 import com.example.InteractionApi.InventoryInteraction;
 import com.example.RuneBotApi.RBApi;
 import com.example.RuneBotApi.RBConstants;
-import net.runelite.api.Client;
-import net.runelite.api.InventoryID;
-import net.runelite.api.Item;
-import net.runelite.api.ItemContainer;
+import net.runelite.api.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -47,5 +44,21 @@ public class Food {
         }
 
         return -1;
+    }
+
+    public static boolean eatFood(int foodId)
+    {
+        Set<Integer> inventoryIds = new HashSet<>();
+        for (int i = 0; i < 29; ++i) {
+            Item item = container.getItem(i);
+            if (item != null) inventoryIds.add(item.getId());
+        }
+
+        if (inventoryIds.contains(foodId)) {
+            InventoryInteraction.useItem(foodId, "Eat");
+            return true;
+        }
+
+        return false;
     }
 }
